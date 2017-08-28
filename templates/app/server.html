@@ -1,0 +1,90 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+Dashboard |
+{% endblock %}
+
+{% block nav %}
+<a href='/dashboard/'>
+    <i class='fa fa-home'></i>
+    <span>Dashboard</span>
+</a>
+<a href='#' id='info'>
+    <i class='fa fa-info-circle'></i>
+    <span>Info</span>
+</a>
+<div class='fright'>
+
+
+    <a href='/server/'>
+        <i class="fa fa-wrench"></i>
+        <span style="color:#F4C430">Server</span>
+    </a>
+    
+    <a href='/sensor/'>
+        <i class="fa fa-wrench"></i>
+        <span>Sensor</span>
+    </a>
+    
+    <a href='/standalone/'>
+        <i class="fa fa-wrench"></i>
+        <span>Standalone</span>
+    </a>
+    
+    <a href='/indexnode/'>
+        <i class="fa fa-wrench"></i>
+        <span>IndexNode</span>
+    </a>
+    
+    
+
+    <a href='/wizard/'>
+        <i class="fa fa-wrench"></i>
+        <span>Setup</span>
+    </a>
+
+    <a href='/config/'>
+        <i class="fa fa-gears"></i>
+        <span>Config</span>
+    </a>
+    <a href='/logout/'>
+        <i class='fa fa-sign-out'></i>
+        <span>Log out</span>
+    </a>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class='wizard_title'>
+    <h1>CyberDefence Setup {{ hostname }}</h1>
+    <br />
+    <i style='font-size: 72px;' class="fa fa-wrench"></i>
+    <br />
+    <br />
+    <br />
+    <span>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</span>
+</div>
+<div class='wizard'>
+<form action='' method='post'>{% csrf_token %}
+    <table>
+        {{ wizard.management_form }}
+        {% if wizard.form.forms %}
+            {{ wizard.form.management_form }}
+            {% for form in wizard.form.forms %}
+                {{ form }}
+            {% endfor %}
+        {% else %}
+            <h5>{{ wizard.form.title|safe }}</h5>
+            {{ wizard.form }}
+        {% endif %}
+    </table>
+    <div class='wizard_button'>
+        {% if wizard.steps.prev %}
+            <button name='wizard_goto_step' type='submit' value='{{ wizard.steps.first }}'>First</button>
+            <button name='wizard_goto_step' type='submit' value='{{ wizard.steps.prev }}'>Previous</button>
+        {% endif %}
+        <input type='submit' value='Next' />
+    </div>
+</form>
+</div>
+{% endblock %}

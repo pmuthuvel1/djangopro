@@ -1,0 +1,42 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+Dashboard |
+{% endblock %}
+
+{% block nav %}
+<a href='/dashboard/'>
+    <i class='fa fa-home'></i>
+    <span>Dashboard</span>
+</a>
+<a href='#' id='info'>
+    <i class='fa fa-info-circle'></i>
+    <span>Info</span>
+</a>
+<div class='fright'>
+
+
+    <a href='/start_jobs/'>
+        <i class="fa fa-wrench"></i>
+        <span>start server jobs</span>
+    </a>
+    
+    <a href='/config/'>
+        <i class="fa fa-gears"></i>
+        <span>Config</span>
+    </a>
+    <a href='/logout/'>
+        <i class='fa fa-sign-out'></i>
+        <span>Log out</span>
+    </a>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class='wizard_title'>
+    {{msg}}
+</div>
+<div class='wizard'>
+	
+</div>
+{% endblock %}

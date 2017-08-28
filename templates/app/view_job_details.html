@@ -1,0 +1,125 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+Dashboard |
+{% endblock %}
+
+{% block nav %}
+<a href='/dashboard/'>
+    <i class='fa fa-home'></i>
+    <span>Dashboard</span>
+</a>
+<a href='#' id='info'>
+    <i class='fa fa-info-circle'></i>
+    <span>Info</span>
+</a>
+<div class='fright'>
+
+
+    <a href='/viewjobs/'>
+        <i class="fa fa-wrench"></i>
+        <span>Start Jobs</span>
+    </a>
+    
+    <a href='/config/'>
+        <i class="fa fa-gears"></i>
+        <span>Config</span>
+    </a>
+    <a href='/logout/'>
+        <i class='fa fa-sign-out'></i>
+        <span>Log out</span>
+    </a>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class='wizard_title'>
+    <h1> Jobs Status </h1>
+    <br />
+    
+    
+</div>
+<div class='wizard'>
+<script>
+
+function isOneChecked() {
+    return ($("[name=service[]]:checked").length > 0);
+}
+function startjobs(){
+	if(!isOneChecked()){
+		alert("Please select atleast one checkbox");
+		return false;
+	}
+	document.forms[0].operation.value='start';
+	document.forms[0].submit();
+}
+
+function stopjobs(){
+	if(!isOneChecked()){
+		alert("Please select atleast one checkbox");
+		return false;
+	}
+	document.forms[0].operation.value='stop';
+	document.forms[0].submit();
+}
+
+
+function checkjobs(){
+	if(!isOneChecked()){
+		alert("Please select atleast one checkbox");
+		return false;
+	}
+	document.forms[0].operation.value='check';
+	document.forms[0].submit();
+}
+</script>	
+	
+<form action="/startjob/" method="post">
+    {% csrf_token %}
+    
+    <input type="hidden" name="ct" value="{{machineDetail.ipaddress}}"> 
+    <input type="hidden" name="operation" value="start"> 
+        
+    <table class="table table-bordered">
+    
+    <thead>
+      <tr>
+        <th>Machine IP </th>
+        <th>Directory Path </th>
+        <th>Script Name </th>
+        <th>Job Status </th>
+        <th>Process Id </th>
+        <th>Select  </th>
+        <th>Remarks  </th>
+      </tr>
+    </thead>
+    <tbody>
+           {% for detail in machineDetail.scriptpath_set.all %}
+           <tr class="success">
+       	       <td> {{detail.ipaddress}}</td>
+               <td> {{detail.dirpath}}</td>
+               <td> {{detail.scriptname}}</td>
+               <td> {{detail.status}}</td>
+               <td> {{detail.pid}} </td>
+               <td>  <input type="checkbox" name="jobstostart" id="{{detail.id}}" value="{{detail.id}}"> </td>
+               <td> {{detail.remarks}} </td>
+           </tr>
+           {% endfor %}        
+        
+ 	</tbody>
+  </table>
+</div>
+
+ 	 <div class='row'>
+ 	 	<div class="col-md-12 col-md-offset-5">
+       		<button type="submit" class="btn btn-success" >Start Selected Jobs</button>
+       		&nbsp;&nbsp;
+       		<button type="submit" class="btn btn-danger" >Check Selected Jobs</button>
+       		&nbsp;&nbsp;
+       		<button type="submit" class="btn btn-danger" >Stop Selected Jobs</button>
+       </div>
+     </div>    
+    
+</form>
+</div>
+{% endblock %}

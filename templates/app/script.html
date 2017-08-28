@@ -1,0 +1,57 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+Script |
+{% endblock %}
+
+{% block nav %}
+<a href='/dashboard/'>
+    <i class='fa fa-home'></i>
+    <span>Dashboard</span>
+</a>
+<a href='#' id='info'>
+    <i class='fa fa-info-circle'></i>
+    <span>Info</span>
+</a>
+<div class='fright'>
+    <a href='/config/'>
+        <i class="fa fa-gears"></i>
+        <span>Config</span>
+    </a>
+    <a href='/logout/'>
+        <i class='fa fa-sign-out'></i>
+        <span>Log out</span>
+    </a>
+</div>
+{% endblock %}
+
+{% block main %}
+    <div class='server'>
+        <form action='/script/{{ server.name }}{{ path }}/' method='post' id='formd' name='Edytor'>
+            <h1>{{ server.name }}</h1>
+            <div class='editor'>
+                <h2>{{ path }}</h2>
+                {{ formd.as_p }}
+                <div class='cmd'>
+                    <i class='fa fa-floppy-o fleft'></i>
+                    <input type="submit" value='Save & Run' />
+                </div>
+                {% csrf_token %}
+            </div>
+            <div class='editor'>
+                <h2>Output</h2>
+                <pre>
+{{ output }}
+                </pre>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% if msg %}
+<footer>
+    {{ msg|safe }}
+</footer>
+{% endif %}
+{% endblock %}

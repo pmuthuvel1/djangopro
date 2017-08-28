@@ -1,0 +1,42 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+Dashboard |
+{% endblock %}
+
+{% block nav %}
+<a href='/dashboard/'>
+    <i class='fa fa-home'></i>
+    <span>Dashboard</span>
+</a>
+<a href='#' id='info'>
+    <i class='fa fa-info-circle'></i>
+    <span>Info</span>
+</a>
+<div class='fright'>
+    <a href='/config/'>
+        <i class="fa fa-gears"></i>
+        <span>Config</span>
+    </a>
+    <a href='/logout/'>
+        <i class='fa fa-sign-out'></i>
+        <span>Log out</span>
+    </a>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class='wizard_title'>
+    <h1>CyberDefence Setup {{ hostname }}</h1>
+    <br />
+    <i style='font-size: 72px;' class="fa fa-wrench"></i>
+</div>
+<div class='wizard'>
+<div>
+    <h1>{{config_type}} setup values stored Successfully in {{filepath}}</h1>
+    {% for x in keyval_list %}
+        {{ x }} <br>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

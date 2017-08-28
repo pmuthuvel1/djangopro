@@ -1,0 +1,465 @@
+@font-face {
+    font-family: 'OpenSans-BoldItalic';
+    src: url('/static/app/fonts/OpenSans-BoldItalic.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url('/static/app/fonts/OpenSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-ExtraBoldItalic';
+    src: url('/static/app/fonts/OpenSans-ExtraBoldItalic.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-ExtraBold';
+    src: url('/static/app/fonts/OpenSans-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-Italic';
+    src: url('/static/app/fonts/OpenSans-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-LightItalic';
+    src: url('/static/app/fonts/OpenSans-LightItalic.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-Light';
+    src: url('/static/app/fonts/OpenSans-Light.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url('/static/app/fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-SemiboldItalic';
+    src: url('/static/app/fonts/OpenSans-SemiboldItalic.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-Semibold';
+    src: url('/static/app/fonts/OpenSans-Semibold.ttf');
+}
+
+@font-face {
+    font-family: 'TerminusMedium';
+    src: url('/static/app/fonts/TerminusMedium.ttf');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html,
+body {
+    color: #fff;
+    background: #369;
+    width: 100%;
+    font-family: 'OpenSans-Light';
+    font-size: 14px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    color: #1c456e;
+    font-size: 24px;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 0 9px #333;
+}
+
+nav a,
+.nav_link,
+.cmd {
+    display: block;
+    float: left;
+    color: #369;
+    background: none;
+    border: none;
+    text-decoration: none;
+    transition: all .5s ease-out;
+    padding: 5px 15px 0px 15px;
+    font-family: 'OpenSans-Regular';
+    font-size: 24px;
+    font-weight: normal;
+    border: none;
+    border-top: 3px solid #fff;
+    letter-spacing: -1px;
+}
+
+nav a:hover,
+.nav_link:hover,
+.cmd:hover {
+    display: block;
+    float: left;
+    color: #369;
+    text-decoration: none;
+    transition: all .5s ease-out;
+    padding: 5px 15px 0px 15px;
+    font-family: 'OpenSans-Regular';
+    font-size: 24px;
+    font-weight: normal;
+    border: none;
+    border-top: 3px solid #1c456e;
+    letter-spacing: -1px;
+}
+
+nav img {
+    margin: 0 auto;
+    padding: 0;
+    float: left;
+}
+
+nav a span,
+nav a:hover span {
+    position: relative;
+    top: -5px;
+    font-size: 18px;
+    color: #1c456e;
+    font-family: 'OpenSans-Semibold';
+    letter-spacing: -1px;
+    line-height: 25px;
+    background: none;
+    border: none;
+}
+
+.cmd input,
+.cmd:hover input {
+    position: relative;
+    top: -10px;
+    font-size: 18px;
+    color: #1c456e;
+    font-family: 'OpenSans-Semibold';
+    letter-spacing: -1px;
+    line-height: 25px;
+    background: none;
+    border: none;
+    margin-left: 5px;
+}
+
+main {
+    margin-top: 51px;
+    overflow: hidden;
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    background: #fff;
+    color: #1c456e;
+    font-size: 14px;
+    box-shadow: 0 0 9px #333;
+    padding: 10px;
+}
+
+.editor,
+#login-form .form-row,
+.services,
+.files,
+.scripts {
+    display: block;
+    margin: 5px;
+}
+
+.server,
+.wizard {
+    color: #fff;
+    margin: 20px;
+    padding-bottom: 2px;
+}
+
+.wizard {
+    padding: 10px;
+    text-align: center;
+    margin-left: 260px;
+}
+
+.wizard_title {
+    padding: 10px;
+    float: left;
+    text-align: center;
+}
+
+.wizard_button {
+    margin-top: 10px;
+    float: right;
+}
+
+.wizard input,
+.wizard button {
+    display: block;
+    padding: 5px;
+    color: #fff;
+    background: #1c456e;
+    border: none;
+    float: left;
+    transition: all .5s ease-out;
+    margin: 3px;
+}
+
+.wizard input:hover,
+.wizard button:hover {
+    color: #1c456e;
+    background: #fff;
+    transition: all .5s ease-out;
+}
+
+.wizard label {
+    display: block;
+    text-align: justify;
+    margin: 0px 10px 0px 10px;
+}
+
+.wizard ul label {
+}
+
+.wizard ul {
+    width: 200px;
+}
+
+.wizard li {
+}
+
+a {
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    transition: all .5s ease-out;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #036;
+    border: none;
+    text-decoration: none;
+    transition: all .5s ease-out;
+    font-weight: bold;
+}
+
+td a i {
+    display: block;
+    width: 10px;
+    height: 10px;
+    float: left;
+    font-size: 16px;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    transition: all .3s ease-out;
+    text-align: center;
+}
+
+td a:hover i {
+    display: block;
+    width: 10px;
+    height: 10px;
+    float: left;
+    font-size: 16px;
+    color: #036;
+    padding: 10px;
+    text-decoration: none;
+    transition: all .3s ease-in;
+    text-align: center;
+}
+
+.cmd {
+    position: fixed;
+    top: 0;
+    left: 50%;
+}
+
+p {
+    text-align: justify;
+}
+
+h1 {
+    color: #fff;
+    font-size: 20px;
+    text-align: left;
+    padding: 10px 5px 0px 15px;
+}
+
+h2,
+#login-form label {
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    padding: 5px 5px 5px 15px;
+    margin: 5px;
+    font-weight: normal;
+    font-family: 'OpenSans-Regular';
+}
+
+h3 {
+    color: #000;
+    font-size: 14px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+h4 {
+    color: #000;
+    font-size: 18px;
+}
+
+h5 {
+    font-weight: normal;
+    font-family: 'OpenSans-Regular';
+    color: #fff;
+    font-size: 16px;
+    text-align: justify;
+    margin: 0px 0px 20px 0px;
+}
+
+h2 i {
+    display: block;
+    float: left;
+    color: #000;
+    padding: 8px 16px 8px 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 10px;
+}
+
+li {
+}
+
+form {
+}
+
+table {
+    margin: 0;
+    padding: 0;
+    border: none;
+    padding: 0px 10px 10px 10px;
+}
+
+tr {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+td {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    padding: 10px;
+    color: #000;
+    background: #79b;
+    min-width: 100px;
+}
+
+.td_aj {
+    text-align: justify;
+}
+
+thead {
+    color: #1c456e;
+}
+
+thead td {
+    border: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    resize: none;
+    font-family: 'TerminusMedium';
+    font-size: 16px;
+    text-align: left;
+    line-height: 1.5;
+    transition: all .5s ease-out;
+    border: none;
+    color: #000;
+    border-top: 1px solid #ccc;
+}
+
+.fs12 {
+    font-size: 12px;
+}
+
+.hlink {
+    cursor: pointer;
+}
+
+.fleft {
+    float: left;
+}
+
+.fright {
+    float: right;
+}
+
+.c_red {
+    color: #f00;
+}
+
+.c_green {
+    color: #0f0;
+}
+
+.c_yellow {
+    color: #ff0;
+}
+
+#login-form {
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 100px;
+    width: 300px;
+    padding: 5px;
+    color: #1c456e;
+    padding-bottom: 2px;
+}
+
+#login-form .submit-row {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#login-form .form-row input {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    background: #fff;
+    color: #000;
+    width: 100%;
+    padding: 5px 0px 5px 0px;
+    border: none;
+    transition: all .5s ease-out;
+    font-family: 'OpenSans-Semibold';
+}
+
+#login-form .form-row input:focus {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    background: #fff;
+    color: #000;
+    width: 100%;
+    padding: 5px 0px 5px 0px;
+    border: none;
+    transition: inset all .5s ease-in;
+    font-family: 'OpenSans-Semibold';
+}

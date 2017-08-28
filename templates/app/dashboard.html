@@ -1,0 +1,144 @@
+{% extends 'app/base.html' %}
+
+{% load app_filter %}
+
+{% block title %}
+Dashboard |
+{% endblock %}
+
+{% block nav %}
+<a href='/dashboard/'>
+    <i class='fa fa-home'></i>
+    <span>Dashboard</span>
+</a>
+<a href='#' id='info'>
+    <i class='fa fa-info-circle'></i>
+    <span>Info</span>
+</a>
+<div class='fright'>
+    
+    <a href='/viewjobs/'>
+        <i class="fa fa-wrench"></i>
+        <span>Start Jobs</span>
+    </a>
+
+    <a href='/server/'>
+        <i class="fa fa-wrench"></i>
+        <span>Server</span>
+    </a>
+    
+    <a href='/sensor/'>
+        <i class="fa fa-wrench"></i>
+        <span>Sensor</span>
+    </a>
+    
+    <a href='/standalone/'>
+        <i class="fa fa-wrench"></i>
+        <span>Standalone</span>
+    </a>
+    
+    <a href='/indexnode/'>
+        <i class="fa fa-wrench"></i>
+        <span>IndexNode</span>
+    </a>
+
+    <a href='/wizard/'>
+        <i class="fa fa-wrench"></i>
+        <span>Setup</span>
+    </a>
+    
+
+    <a href='/config/'>
+        <i class="fa fa-gears"></i>
+        <span>Config</span>
+    </a>
+    <a href='/logout/'>
+        <i class='fa fa-sign-out'></i>
+        <span>Log out</span>
+    </a>
+</div>
+{% endblock %}
+
+{% block main %}
+    {% if servers %}
+        {% for server, service_dict in servers.items %}
+        <div class='server'>
+            <h1>{{ server.name }}</h1>
+            <div class='services'>
+                <h2>Services</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                Status
+                            </td>
+                            <td>
+                                Action
+                            </td>
+                            <td>
+
+                                Name
+                            </td>
+                            <td>
+                                Message
+                            </td>
+                        </tr>
+                    </thead>
+                    {% for service, status in service_dict.items %}
+                    <tr>
+                        <td>
+                            <h4>{{ status|service_format|safe }}</h4>
+                        </td>
+                        <td>
+                            <a href='/service/{{ server.name }}/{{ service }}/start'>
+                                <i class='fa fa-play'></i>
+                            </a>
+                            <a href='/service/{{ server.name }}/{{ service }}/stop'>
+                                <i class='fa fa-stop'></i>
+                            </a>
+                            <a href='/service/{{ server.name }}/{{ service }}/restart'>
+                                <i class='fa fa-refresh'></i>
+                            </a>
+                        </td>
+                        <td>
+                            <h3>{{ service }}</h3>
+                        </td>
+                        <td class='td_aj'>
+                            <h3>{{ status }}</h3>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% if server.file_list.all %}
+            <div class='files'>
+                <h2 class='hlink'><i class='fs12 fa fa-plus-square'></i> Files</h2>
+                <ul>
+                {% for file in server.file_list.all %}
+                    <li><a href='/file/{{ server.name }}{{ file.path }}'>{{ file.path }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% if server.script_list.all %}
+            <div class='scripts'>
+            <h2 class='hlink'><i class='fs12 fa fa-plus-square'></i> Scripts</h2>
+                <ul>
+                {% for script in server.script_list.all %}
+                        <li><a href='/script/{{ server.name }}{{ script.path }}'>{{ script.path }}</a></li>
+                {% endfor %}
+                </ul>
+            <div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+{% if msg %}
+<footer>
+    {{ msg|safe }}
+</footer>
+{% endif %}
+{% endblock %}

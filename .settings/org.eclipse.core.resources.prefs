@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//app/admin.py=utf-8
+encoding//app/cmd.py=utf-8
+encoding//app/forms.py=utf-8
+encoding//app/models.py=utf-8
+encoding//app/sensorforms.py=utf-8
+encoding//app/standaloneforms.py=utf-8
+encoding//app/validators.py=utf-8
+encoding//app/views.py=utf-8

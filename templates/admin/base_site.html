@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | Cyber Defence{% endblock %}
+
+{% block branding %}
+<nav>
+<img src='/static/app/jpg/cyber_175x50.jpg' alt='' />
+<a href='/dashboard/'>
+    <i class='fa fa-home'></i>
+    <span>Dashboard</span>
+</a>
+</nav>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

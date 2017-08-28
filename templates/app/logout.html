@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+Log out |
+{% endblock %}
+
+{% block nav %}
+<div class='fright'>
+    <a href='/login/'>
+        <i class='fa fa-sign-in'></i>
+        <span>Log in</span>
+    </a>
+</div>
+{% endblock %}
+
+{% block main %}
+{% endblock %}
+
+{% block footer %}
+{% if msg %}
+<footer>
+    {{ msg|safe }}
+</footer>
+{% endif %}
+{% endblock %}

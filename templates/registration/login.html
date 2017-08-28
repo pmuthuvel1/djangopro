@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+Dashboard |
+{% endblock %}
+
+{% block main %}
+<form action="/login/" method="post" id="login-form">{% csrf_token %}
+  <div class="form-row">
+    <label for="id_username" class="required">{{ form.username.label }}:</label> {{ form.username }}
+  </div>
+  {% if not form.this_is_the_login_form.errors %}{{ form.username.errors }}{% endif %}
+  <div class="form-row">
+    <label for="id_password" class="required">Password:</label> {{ form.password }}
+    <input type="hidden" name="this_is_the_login_form" value="1" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </div>
+  {% if not form.this_is_the_login_form.errors %}{{ form.password.errors }}{% endif %}
+  {% url 'admin_password_reset' as password_reset_url %}
+  {% if password_reset_url %}
+  <div class="password-reset-link">
+    <a href="{{ password_reset_url }}">Forgotten your password or username?</a>
+  </div>
+  {% endif %}
+  <div class="submit-row">
+    <div class='cmd'>
+        <i class='fa fa-sign-in'></i>
+        <input type="submit" value="Log in" />
+    </div>
+  </div>
+</form>
+
+<script type="text/javascript">
+document.getElementById('id_username').focus()
+</script>
+</div>
+{% endblock %}
